@@ -1,9 +1,8 @@
 package co.zecko.retailer.example.service;
 
-import co.zecko.retailer.client.httpClient.CollectionClient;
 import co.zecko.retailer.client.httpClient.Zecko;
+import co.zecko.retailer.common.pojo.collection.CollectionData;
 import co.zecko.retailer.common.pojo.collection.CollectionsData;
-import co.zecko.retailer.example.configuration.GlobalConfig;
 import co.zecko.retailer.exception.BaseException;
 import java.io.IOException;
 import lombok.AccessLevel;
@@ -16,8 +15,8 @@ public class CollectionService {
 
     final Zecko zecko;
 
-    public CollectionService(GlobalConfig globalConfig) {
-        this.zecko = globalConfig.zecko;
+    public CollectionService(Zecko zecko) {
+        this.zecko = zecko;
     }
 
     public CollectionsData findAll(String after, String before)
@@ -25,4 +24,10 @@ public class CollectionService {
 
         return zecko.collectionClient.findAll(after, before);
     }
+
+    public CollectionData findById(String id)
+        throws IOException, InterruptedException, BaseException {
+        return zecko.collectionClient.findById(id);
+    }
+
 }
