@@ -1,7 +1,7 @@
 package co.zecko.retailer.example.rest.product;
 
 import co.zecko.retailer.common.pojo.product.ProductData;
-import co.zecko.retailer.common.pojo.product.ShopifyProductsData;
+import co.zecko.retailer.common.pojo.product.ProductsData;
 import co.zecko.retailer.example.service.ProductService;
 import co.zecko.retailer.exception.BaseException;
 import lombok.AccessLevel;
@@ -28,12 +28,12 @@ public class ProductController {
     }
 
     @GetMapping("")
-    public ResponseEntity<ShopifyProductsData> findAll(@RequestParam("collectionId") String collectionId)
+    public ResponseEntity<ProductsData> findAll(@RequestParam("collectionId") String collectionId)
         throws IOException, InterruptedException, BaseException {
 
         String after = null;
         String before = null;
-        ShopifyProductsData collectionsData = productService.findAll(collectionId, after, before);
+        ProductsData collectionsData = productService.findAll(collectionId, after, before);
         return new ResponseEntity<>(collectionsData, HttpStatus.OK);
     }
 

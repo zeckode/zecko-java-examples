@@ -2,7 +2,7 @@ package co.zecko.retailer.example.service;
 
 import co.zecko.retailer.client.httpClient.Zecko;
 import co.zecko.retailer.common.pojo.product.ProductData;
-import co.zecko.retailer.common.pojo.product.ShopifyProductsData;
+import co.zecko.retailer.common.pojo.product.ProductsData;
 import co.zecko.retailer.exception.BaseException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -19,7 +19,7 @@ public class ProductService {
         this.zecko = zecko;
     }
 
-    public ShopifyProductsData findAll(String collectionId, String before, String after)
+    public ProductsData findAll(String collectionId, String before, String after)
         throws IOException, InterruptedException, BaseException {
         return zecko.productClient.findAll(collectionId,after,before);
     }
