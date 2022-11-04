@@ -3,7 +3,7 @@ package co.zecko.retailer.example.service;
 import co.zecko.retailer.client.httpClient.Zecko;
 import co.zecko.retailer.common.pojo.product.ProductData;
 import co.zecko.retailer.common.pojo.product.ProductsData;
-import co.zecko.retailer.exception.BaseException;
+import co.zecko.retailer.exception.ZeckoException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ProductService {
     }
 
     public ProductsData findAll(String collectionId, String before, String after)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
         return zecko.productClient.findAll(collectionId,after,before);
     }
 
     public ProductData findById(String id, String imagesBefore, String imagesAfter, String variantsBefore, String variantsAfter,String metaFieldsBefore, String metaFieldsAfter)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
         return zecko.productClient.findById(id,imagesBefore,imagesAfter,variantsBefore,variantsAfter,metaFieldsBefore,metaFieldsAfter);
     }
 }

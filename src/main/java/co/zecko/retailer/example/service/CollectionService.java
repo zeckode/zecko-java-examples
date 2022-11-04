@@ -3,7 +3,7 @@ package co.zecko.retailer.example.service;
 import co.zecko.retailer.client.httpClient.Zecko;
 import co.zecko.retailer.common.pojo.collection.CollectionData;
 import co.zecko.retailer.common.pojo.collection.CollectionsData;
-import co.zecko.retailer.exception.BaseException;
+import co.zecko.retailer.exception.ZeckoException;
 import java.io.IOException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -20,13 +20,13 @@ public class CollectionService {
     }
 
     public CollectionsData findAll(String after, String before)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
 
         return zecko.collectionClient.findAll(after, before);
     }
 
     public CollectionData findById(String id)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
         return zecko.collectionClient.findById(id);
     }
 

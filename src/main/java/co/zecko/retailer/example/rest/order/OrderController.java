@@ -3,7 +3,7 @@ package co.zecko.retailer.example.rest.order;
 import co.zecko.retailer.common.pojo.order.OrderData;
 import co.zecko.retailer.common.pojo.order.OrdersData;
 import co.zecko.retailer.example.service.OrderService;
-import co.zecko.retailer.exception.BaseException;
+import co.zecko.retailer.exception.ZeckoException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class OrderController {
 
     @GetMapping("")
     public ResponseEntity<OrdersData> findAll(@RequestParam("customerId") String clientCustomerId)
-        throws InterruptedException, BaseException, IOException {
+        throws InterruptedException, ZeckoException, IOException {
         String after = null;
         String before = null;
 
@@ -38,7 +38,7 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderData> findByLegacyOrderId(@PathVariable("id") String id)
-    throws InterruptedException, BaseException, IOException {
+    throws InterruptedException, ZeckoException, IOException {
         String lineItemsBefore = null;
         String lineItemsAfter = null;
 
