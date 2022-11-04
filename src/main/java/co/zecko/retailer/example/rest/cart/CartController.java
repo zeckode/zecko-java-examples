@@ -19,7 +19,7 @@ import java.io.IOException;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CartController {
 
-    public CartService cartService;
+    final CartService cartService;
 
     public CartController(CartService cartService) {
         this.cartService = cartService;

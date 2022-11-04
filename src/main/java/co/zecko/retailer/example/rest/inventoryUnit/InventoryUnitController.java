@@ -5,7 +5,6 @@ import co.zecko.retailer.common.pojo.InventoryUnitHistory.InventoryUnitHistoryRe
 import co.zecko.retailer.common.pojo.inventoryUnit.InventoryUnitParams;
 import co.zecko.retailer.common.pojo.inventoryUnit.InventoryUnitResponseWrapper;
 import co.zecko.retailer.example.service.InventoryUnitService;
-import co.zecko.retailer.example.service.ProductService;
 import co.zecko.retailer.exception.BaseException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
