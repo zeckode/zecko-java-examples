@@ -1,20 +1,18 @@
 package co.zecko.retailer.example.rest.collection;
 
+import co.zecko.retailer.common.pojo.collection.CollectionData;
 import co.zecko.retailer.common.pojo.collection.CollectionsData;
 import co.zecko.retailer.example.service.CollectionService;
 import co.zecko.retailer.exception.BaseException;
 import java.io.IOException;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/collection")
@@ -35,5 +33,13 @@ public class CollectionController {
         String before = null;
         CollectionsData collectionsData = collectionService.findAll(after, before);
         return new ResponseEntity<>(collectionsData, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CollectionData> findById(@PathVariable("id") String id)
+        throws IOException, InterruptedException, BaseException {
+
+        CollectionData collectionData = collectionService.findById(id);
+        return new ResponseEntity<>(collectionData, HttpStatus.OK);
     }
 }
