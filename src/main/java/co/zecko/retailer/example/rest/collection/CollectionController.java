@@ -3,7 +3,7 @@ package co.zecko.retailer.example.rest.collection;
 import co.zecko.retailer.common.pojo.collection.CollectionData;
 import co.zecko.retailer.common.pojo.collection.CollectionsData;
 import co.zecko.retailer.example.service.CollectionService;
-import co.zecko.retailer.exception.BaseException;
+import co.zecko.retailer.exception.ZeckoException;
 import java.io.IOException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -27,7 +27,7 @@ public class CollectionController {
 
     @GetMapping("")
     public ResponseEntity<CollectionsData> findAll()
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
 
         String after = null;
         String before = null;
@@ -37,7 +37,7 @@ public class CollectionController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CollectionData> findById(@PathVariable("id") String id)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
 
         CollectionData collectionData = collectionService.findById(id);
         return new ResponseEntity<>(collectionData, HttpStatus.OK);

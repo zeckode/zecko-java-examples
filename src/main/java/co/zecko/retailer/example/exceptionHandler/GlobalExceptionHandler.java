@@ -1,6 +1,6 @@
 package co.zecko.retailer.example.exceptionHandler;
 
-import co.zecko.retailer.exception.BaseException;
+import co.zecko.retailer.exception.ZeckoException;
 import java.util.Date;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -20,14 +20,14 @@ import pojo.ErrorEntry;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BaseException.class)
-    public ResponseEntity<ErrorEntry> handleBaseException(BaseException baseException) {
-        logException(baseException);
-        ErrorEntry errorEntry = new ErrorEntry(baseException.getMessage(), new Date(),
-            baseException.getDetails());
+    @ExceptionHandler(ZeckoException.class)
+    public ResponseEntity<ErrorEntry> handleZeckoException(ZeckoException ZeckoException) {
+        logException(ZeckoException);
+        ErrorEntry errorEntry = new ErrorEntry(ZeckoException.getMessage(), new Date(),
+            ZeckoException.getDetails());
 
         return new ResponseEntity<>(errorEntry,
-            HttpStatus.valueOf(baseException.getHttpStatus().value()));
+            HttpStatus.valueOf(ZeckoException.getHttpStatus().value()));
     }
 
     @ExceptionHandler(Exception.class)

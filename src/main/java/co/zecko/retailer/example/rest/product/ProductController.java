@@ -3,7 +3,7 @@ package co.zecko.retailer.example.rest.product;
 import co.zecko.retailer.common.pojo.product.ProductData;
 import co.zecko.retailer.common.pojo.product.ProductsData;
 import co.zecko.retailer.example.service.ProductService;
-import co.zecko.retailer.exception.BaseException;
+import co.zecko.retailer.exception.ZeckoException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class ProductController {
 
     @GetMapping("")
     public ResponseEntity<ProductsData> findAll(@RequestParam("collectionId") String collectionId)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
 
         String after = null;
         String before = null;
@@ -39,7 +39,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductData> findById(@PathVariable("id") String id)
-        throws IOException, InterruptedException, BaseException {
+        throws IOException, InterruptedException, ZeckoException {
         String imagesBefore = null;
         String imagesAfter = null;
         String variantsBefore = null;
