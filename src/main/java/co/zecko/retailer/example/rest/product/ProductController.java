@@ -49,4 +49,11 @@ public class ProductController {
         ProductData productData = productService.findById(id,imagesBefore,imagesAfter,variantsBefore,variantsAfter,metaFieldsBefore,metaFieldsAfter);
         return new ResponseEntity<>(productData,HttpStatus.OK);
     }
+
+    @GetMapping("/realtime/{id}")
+    public ResponseEntity<ProductData> findRealTimeData(@PathVariable("id") String id)
+        throws IOException, InterruptedException, ZeckoException {
+        ProductData productData = productService.findRealTimeData(id);
+        return new ResponseEntity<>(productData,HttpStatus.OK);
+    }
 }

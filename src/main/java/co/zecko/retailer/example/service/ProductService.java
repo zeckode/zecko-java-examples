@@ -28,4 +28,9 @@ public class ProductService {
         throws IOException, InterruptedException, ZeckoException {
         return zecko.productClient.findById(id,imagesBefore,imagesAfter,variantsBefore,variantsAfter,metaFieldsBefore,metaFieldsAfter);
     }
+
+    public ProductData findRealTimeData(String id)
+        throws IOException, InterruptedException, ZeckoException {
+        return zecko.productClient.findRealTimeData(id);
+    }
 }
