@@ -31,6 +31,6 @@ public class ProductService {
 
     public ProductData findRealTimeData(String id)
         throws IOException, InterruptedException, ZeckoException {
-        return zecko.productClient.findRealTimeData(id);
+        return zecko.productClient.getRealTime(id);
     }
 }
